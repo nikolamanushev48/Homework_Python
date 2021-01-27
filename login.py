@@ -1,16 +1,15 @@
-from flask import Flask,render_template,request,redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask import redirect, url_for
+from flask_login import LoginManager
+from models import User
+
+login_manager = LoginManager()
 
 
-app = Flask(__name__)
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter_by(login_id=user_id).first()
 
-@app.route('/')
-def regist():
-    return render_template('regist.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
-"""
-def profile():
-    return render_template("profil.html")
-"""
+@login_manager.unauthorized_handler
+def unauthorized():
+    return redirect(url_for('login'))
