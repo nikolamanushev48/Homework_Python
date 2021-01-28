@@ -89,6 +89,7 @@ def topic():
 @app.route('/', methods = ['GET'])
 def mainPage():
     topics = Topic.query.all()
+
     return render_template("mainpage.html",user=current_user,topics = topics)
     #return redirect(url_for('login'))
 

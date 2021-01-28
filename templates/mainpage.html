@@ -15,6 +15,11 @@
             font-family:courier;
             margin:20px;
         }
+        h4{
+            color:red;
+            font-size:30px;
+            padding: 10px;
+        }
     </style>
 </head>
 <body style = "background-color:black">
@@ -50,17 +55,21 @@
     <div class="row justify-content-center">
         {% if user.login_id %}
         <div class="topic">
-            <a href = "/topic">Add Topic</a>
+            <a href = "/topic" style="font-size:40px;">Add Topic</a>
         </div>
         {% endif %}
     </div>
 </div>
 
-<div class = "topiccolor" style = "color:white;">
-    {% for topic in topics %}
-        {{topic.name}}
-        {{topic.description}}
+<div class = "topiccolor" style = "color:white;font-size:30px;padding: 30px ">
 
+    {% for topic in topics %}
+        <h4>Topic : </h4>
+        {{topic.name}}
+
+        <h4>Description : </h4>
+        {{topic.description}}
+        </br></br>
     {% endfor %}
 </div>
 
